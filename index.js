@@ -77,6 +77,8 @@ function animate() {
     player.update();
     enemy.update();
 
+    player.velocity.x = 0;
+
     if (keys.q.pressed) {
       player.velocity.x = -1;
     } else if (keys.d.pressed) {
