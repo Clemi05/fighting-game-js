@@ -77,8 +77,20 @@ window.addEventListener("keydown", (event) => {
     case "d":
       player.velocity.x = 1;
       break;
+    case "q":
+      player.velocity.x = -1;
+      break;
+  }
+  console.log(event.key);
+})
 
-    default:
+window.addEventListener("keyup", (event) => {
+  switch (event.key) {
+    case "d":
+      player.velocity.x = 0;
+      break;
+    case "q":
+      player.velocity.x = 0;
       break;
   }
   console.log(event.key);
