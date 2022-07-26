@@ -1,4 +1,4 @@
-// Restart at 28:00min
+// Restart at 37:00min
 // https://www.youtube.com/watch?v=vyqbNFMDRGQ
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
@@ -70,6 +70,8 @@ const keys = {
   },
 }
 
+let lastKey;
+
 function animate() {
     window.requestAnimationFrame(animate);
     c.fillStyle = "black";
@@ -79,9 +81,9 @@ function animate() {
 
     player.velocity.x = 0;
 
-    if (keys.q.pressed) {
+    if (keys.q.pressed && lastKey === "q") {
       player.velocity.x = -1;
-    } else if (keys.d.pressed) {
+    } else if (keys.d.pressed && lastKey === "d") {
       player.velocity.x = 1;
     }
 }
@@ -93,9 +95,11 @@ window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "d":
       keys.d.pressed = true;
+      lastKey = "d";
       break;
     case "q":
       keys.q.pressed = true;
+      lastKey = "q";
       break;
   }
 })
