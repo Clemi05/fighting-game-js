@@ -68,6 +68,9 @@ const keys = {
   d: {
     pressed: false
   },
+  z: {
+    pressed: false
+  }
 }
 
 let lastKey;
@@ -90,7 +93,7 @@ function animate() {
 
 animate();
 
-
+// Moving the players
 window.addEventListener("keydown", (event) => {
   switch (event.key) {
     case "d":
@@ -100,6 +103,9 @@ window.addEventListener("keydown", (event) => {
     case "q":
       keys.q.pressed = true;
       lastKey = "q";
+      break;
+    case "z":
+      player.velocity.y = -10;
       break;
   }
 })
@@ -111,6 +117,9 @@ window.addEventListener("keyup", (event) => {
       break;
     case "q":
       keys.q.pressed = false;
+      break;
+    case "z":
+      keys.z.pressed = false;
       break;
   }
 })
