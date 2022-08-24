@@ -1,4 +1,4 @@
-// Restart at 39:00min
+// Restart at 42:30min
 // https://www.youtube.com/watch?v=vyqbNFMDRGQ
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
@@ -16,6 +16,7 @@ class Sprite {
         this.position = position;
         this.velocity = velocity;
         this.height = 150;
+        this.lastKey;
     }
 
     draw() {
@@ -93,8 +94,9 @@ function animate() {
 
 animate();
 
-// Moving the players
+// Moving player and enemy with the keyboard
 window.addEventListener("keydown", (event) => {
+  console.log(event.key);
   switch (event.key) {
     case "d":
       keys.d.pressed = true;
@@ -107,10 +109,22 @@ window.addEventListener("keydown", (event) => {
     case "z":
       player.velocity.y = -10;
       break;
+    case "ArrowRight":
+      keys.ArrowRight.pressed = true;
+      enemy.lastKey = "ArrowRight"
+      break;
+    case "ArrowLeft":
+      keys.ArrowLeft.pressed = true;
+      enemy.lastKey = "ArrowLeft";
+      break;
+    case "ArrowUp":
+      enemy.velocity.y = -10;
+      break;
   }
 })
 
 window.addEventListener("keyup", (event) => {
+  // player keys
   switch (event.key) {
     case "d":
       keys.d.pressed = false;
