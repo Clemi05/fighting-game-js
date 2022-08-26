@@ -1,4 +1,4 @@
-// Restart at 50:00min
+// Restart at 56:00min
 // https://www.youtube.com/watch?v=vyqbNFMDRGQ
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
@@ -120,6 +120,11 @@ function animate() {
     }
 
     // Detect for collision
+    if (player.attackBox.position.x + player.attackBox.width >= enemy.position.x) {
+      console.log("Touch the enemy");
+    } else {
+
+    }
 }
 
 animate();
