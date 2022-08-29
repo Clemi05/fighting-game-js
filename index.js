@@ -48,10 +48,13 @@ class Sprite {
       } else {
           this.velocity.y += gravity;
       }
+    }
 
-      attack() {
-        this.isAttacking = true;
-      }
+    attack() {
+      this.isAttacking = true;
+      setTimeout(() => {
+        this.isAttacking = false;
+      }, 100);
     }
 }
 
@@ -133,6 +136,7 @@ function animate() {
         player.attackBox.position.y <= enemy.position.y + enemy.height &&
         player.isAttacking
       ) {
+        player.isAttacking = false;
       console.log("Touch the enemy");
     } else {
 
@@ -156,6 +160,9 @@ window.addEventListener("keydown", (event) => {
       break;
     case "z":
       player.velocity.y = -20;
+      break;
+    case " ":
+      player.attack();
       break;
     // Enemy keys
     case "ArrowRight":
