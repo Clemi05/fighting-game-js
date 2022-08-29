@@ -1,4 +1,4 @@
-// Restart at 56:00min
+// Restart at 1:03:30 min
 // https://www.youtube.com/watch?v=vyqbNFMDRGQ
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
@@ -33,8 +33,10 @@ class Sprite {
       c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
       // attack box
-      c.fillStyle = "green";
-      c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+      if (this.isAttacking) {
+        c.fillStyle = "green";
+        c.fillRect(this.attackBox.position.x, this.attackBox.position.y, this.attackBox.width, this.attackBox.height)
+      }
     }
 
     update() {
@@ -44,9 +46,9 @@ class Sprite {
       this.position.y += this.velocity.y;
 
       if (this.position.y + this.height + this.velocity.y >= canvas.height) {
-          this.velocity.y = 0;
+        this.velocity.y = 0;
       } else {
-          this.velocity.y += gravity;
+        this.velocity.y += gravity;
       }
     }
 
