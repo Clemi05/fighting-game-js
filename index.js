@@ -13,22 +13,24 @@ const gravity = 0.7;
 
 class Sprite {
     constructor({ position, velocity, color = "red" }) {
-        this.position = position;
-        this.velocity = velocity;
-        this.height = 150;
-        this.lastKey;
-        this.attackBox = {
-          position: this.position,
-          width: 100,
-          height: 50,
-        }
-        this.color = color;
+      this.position = position;
+      this.velocity = velocity;
+      this.width = 50;
+      this.height = 150;
+      this.lastKey;
+      this.attackBox = {
+        position: this.position,
+        width: 100,
+        height: 50,
+      }
+      this.color = color;
+      this.isAttacking;
     }
 
     draw() {
       // player
       c.fillStyle = this.color;
-      c.fillRect(this.position.x, this.position.y, 50, this.height)
+      c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
       // attack box
       c.fillStyle = "green";
@@ -36,16 +38,20 @@ class Sprite {
     }
 
     update() {
-        this.draw();
+      this.draw();
 
-        this.position.x += this.velocity.x;
-        this.position.y += this.velocity.y;
+      this.position.x += this.velocity.x;
+      this.position.y += this.velocity.y;
 
-        if (this.position.y + this.height + this.velocity.y >= canvas.height) {
-            this.velocity.y = 0;
-        } else {
-            this.velocity.y += gravity;
-        }
+      if (this.position.y + this.height + this.velocity.y >= canvas.height) {
+          this.velocity.y = 0;
+      } else {
+          this.velocity.y += gravity;
+      }
+
+      attack() {
+        this.isAttacking = true;
+      }
     }
 }
 
@@ -120,8 +126,12 @@ function animate() {
     }
 
     // Detect for collision
-    if (player.attackBox.position.x + player.attackBox.width >= enemy.position.x
-        && player.attackBox.position.x <= enemy.position.x + enemy.width
+    if (
+        player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
+        player.attackBox.position.x <= enemy.position.x + enemy.width &&
+        player.attackBox.position.y + player.attackBox.height >= enemy.position.y &&
+        player.attackBox.position.y <= enemy.position.y + enemy.height &&
+        player.isAttacking
       ) {
       console.log("Touch the enemy");
     } else {
