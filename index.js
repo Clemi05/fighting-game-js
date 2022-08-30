@@ -32,6 +32,7 @@ class Sprite {
       c.fillStyle = this.color;
       c.fillRect(this.position.x, this.position.y, this.width, this.height)
 
+      // TODO
       // attack box
       if (this.isAttacking) {
         c.fillStyle = "green";
@@ -130,6 +131,7 @@ function animate() {
       enemy.velocity.x = 5;
     }
 
+    // TODO
     // Detect for collision
     if (
         player.attackBox.position.x + player.attackBox.width >= enemy.position.x &&
