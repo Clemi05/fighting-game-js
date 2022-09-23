@@ -1,0 +1,21 @@
+main {
+  position: relative;
+}
+
+.container {
+  position: absolute;
+  display: flex;
+}
+
+.player-health,
+.enemy-health {
+  background-color: yellow;
+  height: 30px;
+  width: 100px;
+}
+
+.timer {
+  background-color: red;
+  width: 100px;
+  height: 100px;
+}

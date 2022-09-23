@@ -1,4 +1,4 @@
-// Restart at 1:11:30 min
+// Restart at 1:13:00 min
 // https://www.youtube.com/watch?v=vyqbNFMDRGQ
 const canvas = document.querySelector("canvas");
 const c = canvas.getContext("2d");
